@@ -1,3 +1,5 @@
 spring:
   application:
     name: user-service
+  mongodb:
+    uri: ${USER_MONGO_URI:mongodb://localhost:27017/user_db}
