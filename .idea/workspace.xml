@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7c2970f-90d5-44fc-b854-67bb611c1200" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/user-service.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-service/deno.json" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/deno.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-service/deno.lock" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/deno.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-service/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-service/src/repository/SearchRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/repository/SearchRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-service/src/repository/initSearchRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/repository/initSearchRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-service/src/service/SearchService.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/service/SearchService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/filter/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/filter/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/ropository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/users/user_service/security/JwtService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,13 +65,17 @@
     "Spring Boot.UserServiceApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/amisharawat/workspace/pair_project/hotel-app-microservice"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.users.user_service.service.responseDto" />
       <recent name="com.users.user_service.service.requestDto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/user-service/gradle/wrapper" />

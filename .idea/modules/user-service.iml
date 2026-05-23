@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../user-service">
       <excludeFolder url="file://$MODULE_DIR$/../../user-service/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../user-service/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service/.idea" />
     </content>
     <orderEntry type="jdk" jdkName="ms-25" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
