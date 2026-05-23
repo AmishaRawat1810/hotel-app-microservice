@@ -1,13 +1,10 @@
-server:
-  port: 8080
-
 spring:
   application:
     name: user-service
   mongodb:
-    uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/user_db}
+    uri: ${USER_MONGO_URI:mongodb://mongo:27017/user_db}
+server:
+  port: 3000
+  address: 0.0.0.0
 
-app:
-  jwt:
-    secret: "boost-is-the-secret-of-my-energy-boost-is-the-secret-of-my-energy"
-    expiration-ms: 86400000 # 24 hours
+kind: Application
