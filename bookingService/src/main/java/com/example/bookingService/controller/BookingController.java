@@ -45,11 +45,11 @@ public class BookingController {
     @GetMapping("/bookings")
     public List<Booking> getBookings(@RequestHeader(value = "Authorization", required = false) String authHeader) {
 
-        String token = authHeader.substring(7);
+//        String token = authHeader.substring(7);
         String userID = "0" ; // extract userid from username
 //        String userID = userClient.getUserId(token);
         List<Booking> bookings = bookingService.getBookings(userID);
-
+        System.out.println(bookings);
         return bookings;
     }
 

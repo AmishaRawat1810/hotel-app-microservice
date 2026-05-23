@@ -21,7 +21,7 @@ public class SearchClient {
 
         return restClient.get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/search/availability")
+                        .path("api/search/internal/availability")
                         .queryParam("rooms", rooms)
                         .queryParam("id", hotelId)
                         .build())
@@ -39,7 +39,7 @@ public class SearchClient {
                         rooms);
 
         restClient.post()
-                .uri("/search/update-rooms")
+                .uri("/api/search/internal/update-rooms")
                 .body(request)
                 .retrieve()
                 .toBodilessEntity();
@@ -48,7 +48,7 @@ public class SearchClient {
     public String getHotelName(String id) {
 
         return restClient.get()
-                .uri("/hotels/{id}", id)
+                .uri("api/search/internal/hotels/{id}", id)
                 .retrieve()
                 .body(String.class);
     }

@@ -18,7 +18,7 @@ public class UserClient {
     public String getUsername(String id) {
 
         return restClient.get()
-                .uri("/api/users/{id}", id)
+                .uri("/api/users/username/{id}", id)
                 .retrieve()
                 .body(String.class);
     }
@@ -26,7 +26,7 @@ public class UserClient {
     public String getUserId(String token) {
 
         return restClient.get()
-                .uri("/users/me")
+                .uri("api/users/me")
                 .header("Authorization", token)
                 .retrieve()
                 .body(String.class);
