@@ -1,5 +1,6 @@
 package com.example.bookingService.service;
 
+import com.example.bookingService.requestDTO.HotelNameResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import com.example.bookingService.requestDTO.UpdateRoomsRequestDTO;
@@ -47,9 +48,11 @@ public class SearchClient {
 
     public String getHotelName(String id) {
 
-        return restClient.get()
+        HotelNameResponse response =  restClient.get()
                 .uri("api/search/internal/hotels/{id}", id)
                 .retrieve()
-                .body(String.class);
+                .body(HotelNameResponse.class);
+
+        return response.name();
     }
 }

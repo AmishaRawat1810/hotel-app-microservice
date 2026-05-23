@@ -28,12 +28,10 @@ public class BookingService {
 
     public void bookRooms(String userID, BookHotelRequestDTO bookHotelRequestDTO) throws  RuntimeException{
 
-//        Boolean areRoomsAvailable = searchClient.checkAvailability(bookHotelRequestDTO.hotel_id(), bookHotelRequestDTO.rooms());
-        Boolean areRoomsAvailable = true;
+        Boolean areRoomsAvailable = searchClient.checkAvailability(bookHotelRequestDTO.hotel_id(), bookHotelRequestDTO.rooms());
         if (areRoomsAvailable) {
             Booking booking = new Booking(null, userID, bookHotelRequestDTO.hotel_id(), bookHotelRequestDTO.rooms());
-//            searchClient.updateRoomsAvailable(bookHotelRequestDTO.hotel_id(), bookHotelRequestDTO.rooms());
-
+            searchClient.updateRoomsAvailable(bookHotelRequestDTO.hotel_id(), bookHotelRequestDTO.rooms());
             bookingRepository.save(booking);
             return;
         }
@@ -53,10 +51,8 @@ public class BookingService {
 
     public ByteArrayInputStream generateReceiptPdf(String id) {
         Booking booking = bookingRepository.getBookingById(id);
-//        String username = userClient.getUsername(booking.userID());
-//        String hotelName = searchClient.getHotelName(booking.hotelID());
-        String username = "hello";
-        String hotelName = "hotel 1";
+        String username = userClient.getUsername(booking.userID());
+        String hotelName = searchClient.getHotelName(booking.hotelID());
         Document document = new Document();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 

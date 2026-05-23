@@ -2,8 +2,8 @@ package com.example.bookingService.controller;
 
 import com.example.bookingService.model.Booking;
 import com.example.bookingService.requestDTO.BookHotelRequestDTO;
-import com.example.bookingService.responseDTO.BookingResponseDTO;
 import com.example.bookingService.service.BookingService;
+import com.example.bookingService.service.SearchClient;
 import com.example.bookingService.service.UserClient;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -43,14 +43,13 @@ public class BookingController {
     }
 
     @GetMapping("/bookings")
-    public List<Booking> getBookings(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+    public List<Booking> getBookings(@RequestHeader(value = "Authorization") String authHeader) {
 
-//        String token = authHeader.substring(7);
-        String userID = "0" ; // extract userid from username
-//        String userID = userClient.getUserId(token);
-        List<Booking> bookings = bookingService.getBookings(userID);
-        System.out.println(bookings);
-        return bookings;
+        String token = authHeader.substring(7);
+//        String userID = "0" ;
+        String userID = userClient.getUserId(token);
+        return bookingService.getBookings(userID);
+
     }
 
     @GetMapping("/bookings/{id}/receipt.pdf")
