@@ -1,0 +1,87 @@
+services:
+  # -------------------------------------
+  # API GATEWAY
+  # -------------------------------------
+  api-gateway:
+    image: nginx:alpine
+    container_name: api-gateway
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - user-service
+    networks:
+      - hotel-network
+
+  # -------------------------------------
+  # USER SERVICE & DB
+  # -------------------------------------
+  user-db:
+    image: mongo:7
+    container_name: user-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - user_mongo_data:/data/db
+    networks:
+      - hotel-network
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://user-db:27017/user_db
+    depends_on:
+      user-db:
+        condition: service_healthy
+    networks:
+      - hotel-network
+  # -------------------------------------
+  # SEARCH SERVICE & DB
+  # -------------------------------------
+  search-db:
+    image: mongo:7
+    container_name: search-db
+    ports:
+      - "27018:27017" # Exposed on 27018 locally to avoid conflict with user-db
+    volumes:
+      - search_mongo_data:/data/db
+    networks:
+      - hotel-network
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  search-service:
+    build:
+      context: ./search-service
+      dockerfile: Dockerfile
+    container_name: search-service
+    environment:
+      - MONGO_SEARCH_URI=mongodb://search-db:27017
+      - PORT=3000
+    depends_on:
+      search-db:
+          condition: service_healthy
+    networks:
+      - hotel-network
+
+volumes:
+  user_mongo_data:
+  search_mongo_data:
+
+networks:
+  hotel-network:
+    driver: bridge

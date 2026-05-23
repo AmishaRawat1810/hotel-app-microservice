@@ -1,22 +1,44 @@
 package com.users.user_service.security;
 
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.util.Date;
 
 @Service
 public class JwtService {
+    private final SecretKey key;
+    private final long expirationMs;
+
+    public JwtService(@Value("${app.jwt.secret}") String secret,
+                      @Value("${app.jwt.expiration-ms}") long expirationMs) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        this.expirationMs = expirationMs;
+    }
     private static final String SECRET_KEY = "boost-is-the-secret-of-my-energy-boost-is-the-secret-of-my-energy";
     private final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
     public String generateToken(String id) {
         return Jwts.builder()
                 .claim("userId", id)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expirationMs))
                 .signWith(key)
                 .compact();
+    }
+
+    public boolean isValidToken(String token) {
+        try {
+            Jwts.parser().verifyWith(key).build().parseSignedClaims(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
     }
 
     public String extractUserId(String token) {
@@ -28,4 +50,5 @@ public class JwtService {
 
         return claims.get("userId", String.class);
     }
+
 }

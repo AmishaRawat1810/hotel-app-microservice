@@ -23,7 +23,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
-        logger.info("Request comes.............{}", httpSecurity);
+        logger.info("Request incoming.............{}", httpSecurity);
 
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)

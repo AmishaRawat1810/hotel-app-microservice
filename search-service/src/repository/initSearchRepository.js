@@ -1,10 +1,11 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from "@db/mongo";
 
-export const intiDb = async () => {
-  const uri = "mongodb://localhost:27017";
-  const client = new MongoClient(uri);
-  await client.connect();
+export const initDb = async () => {
+  const uri = Deno.env.get("MONGO_SEARCH_URI") || "mongodb://localhost:27017";
+  const client = new MongoClient();
+  await client.connect(uri);
 
-  const db = client.db("searchDb");
+  console.log("Connected to Search MongoDB via Deno Driver");
+  const db = client.database("searchDb");
   return db;
 }

@@ -1,40 +1,37 @@
 package com.users.user_service.mongodbServiceImp;
 
+import com.users.user_service.dto.AuthDTOs;
 import com.users.user_service.model.User;
-import com.users.user_service.requestDto.LoginRequest;
-import com.users.user_service.requestDto.RegisterRequest;
-import com.users.user_service.responseDto.LoginResponse;
-import com.users.user_service.responseDto.RegisterResponse;
-import com.users.user_service.ropository.UserRepository;
+import com.users.user_service.repository.UserRepository;
 import com.users.user_service.security.JwtService;
 import com.users.user_service.service.UserService;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     private final JwtService jwtService;
 
-    public UserServiceImpl(UserRepository userRepository, JwtService jwtService) {
+    public UserServiceImpl(UserRepository userRepository,
+                           JwtService jwtService) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
     }
 
     @Override
-    public RegisterResponse register(RegisterRequest user) {
+    public AuthDTOs.RegisterResponse register(AuthDTOs.RegisterRequest user) {
         if (userRepository.existsByName(user.name()) && userRepository.existsByPassword(user.password())) {
-            return new RegisterResponse("User already exists");
+            return new AuthDTOs.RegisterResponse("User already exists");
         }
 
         User newUser = new User(null, user.name(), user.password());
         userRepository.save(newUser);
 
-        return new RegisterResponse("User registered successfully");
+        return new AuthDTOs.RegisterResponse("User registered successfully");
     }
 
     @Override
-    public LoginResponse login(LoginRequest user) {
+    public AuthDTOs.LoginResponse login(AuthDTOs.LoginRequest user) {
         User existingUser = userRepository.findByName(user.name());
 
         if (existingUser == null) {
@@ -47,6 +44,6 @@ public class UserServiceImpl implements UserService {
 
         String token = jwtService.generateToken(existingUser.id());
 
-        return new LoginResponse(token);
+        return new AuthDTOs.LoginResponse(token);
     }
 }
