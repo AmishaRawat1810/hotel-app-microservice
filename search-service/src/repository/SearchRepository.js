@@ -1,7 +1,8 @@
 export default class SearchRepository {
   #hotels;
-  constructor(db) {
-    this.#hotels = db.collection("hotels");
+
+  constructor(mongoDb) {
+    this.#hotels = mongoDb.collection("hotels");
   }
 
   async findAllHotelsByCity(city) {
