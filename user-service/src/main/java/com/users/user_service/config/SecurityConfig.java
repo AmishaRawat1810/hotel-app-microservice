@@ -31,7 +31,7 @@ public class SecurityConfig {
                         sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/*")
+                        .requestMatchers("/api/users/**", "/api/search/hotels")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
