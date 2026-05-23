@@ -11,7 +11,8 @@ public class UserClient {
     public UserClient(RestClient.Builder builder) {
 
         this.restClient = builder
-                .baseUrl("http://localhost:8081")
+//                .baseUrl("http://localhost:8081")
+                .baseUrl("http://10.132.124.232:3000")
                 .build();
     }
 
@@ -26,8 +27,7 @@ public class UserClient {
     public String getUserId(String token) {
 
         return restClient.get()
-                .uri("api/users/me")
-                .header("Authorization", token)
+                .uri("api/users/me{token}", token)
                 .retrieve()
                 .body(String.class);
     }
