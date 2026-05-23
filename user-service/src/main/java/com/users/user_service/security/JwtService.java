@@ -20,6 +20,7 @@ public class JwtService {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
         this.expirationMs = expirationMs;
     }
+
     public String generateToken(String id) {
         return Jwts.builder()
                 .claim("userId", id)

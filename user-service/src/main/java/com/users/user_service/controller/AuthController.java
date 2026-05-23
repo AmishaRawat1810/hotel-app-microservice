@@ -5,10 +5,6 @@ import com.users.user_service.security.JwtService;
 import com.users.user_service.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +42,20 @@ public class AuthController {
         }
     }
 
+    @GetMapping("/username")
+    public String findUserById(@RequestParam("id") String id) {
+        logger.info("username request comes {}", id);
+
+        return userService.findUserNameById(id);
+    }
+
+    @GetMapping("/me")
+    public String findUserByToken(@RequestParam("token") String token) {
+        logger.info("token request comes {}", token);
+
+        return userService.findIdByToken(token);
+    }
+
     @GetMapping("/validate")
     public ResponseEntity<?> validateToken(@RequestHeader(value = "Authorization", required = false) String authHeader) {
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -56,4 +66,5 @@ public class AuthController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
+
 }
