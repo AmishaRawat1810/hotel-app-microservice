@@ -1,6 +1,7 @@
 package com.users.user_service.security;
 
 import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,8 @@ public class JwtService {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
         this.expirationMs = expirationMs;
     }
+    private static final String SECRET_KEY = "boost-is-the-secret-of-my-energy-boost-is-the-secret-of-my-energy";
+    private final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
     public String generateToken(String id) {
         return Jwts.builder()
@@ -36,6 +39,16 @@ public class JwtService {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
+    }
+
+    public String extractUserId(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+        return claims.get("userId", String.class);
     }
 
 }

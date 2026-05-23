@@ -8,4 +8,4 @@ public record User(
         @Id String id,
         String name,
         String password
-) { }
+) {}

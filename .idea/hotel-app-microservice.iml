@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-config:7.0.5" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-web:7.0.5" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-context:7.0.7" level="project" />
@@ -16,5 +17,11 @@
     <orderEntry type="library" name="Gradle: io.jsonwebtoken:jjwt-api:0.12.6" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-web:7.0.7" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:2.0.17" level="project" />
+=======
+    <orderEntry type="library" name="Gradle: org.springframework:spring-context:7.0.7" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-web:7.0.7" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:4.0.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:4.0.6" level="project" />
+>>>>>>> 1d11104b768dc4e83205ec31edb383ac70d9c046
   </component>
 </module>

@@ -1,9 +1,10 @@
-package com.users.user_service.service;
+package com.users.user_service.mongodbServiceImp;
 
 import com.users.user_service.dto.AuthDTOs;
 import com.users.user_service.model.User;
 import com.users.user_service.repository.UserRepository;
 import com.users.user_service.security.JwtService;
+import com.users.user_service.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
