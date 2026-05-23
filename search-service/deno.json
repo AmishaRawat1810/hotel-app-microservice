@@ -5,6 +5,7 @@
   },
   "imports": {
     "@db/mongo": "jsr:@db/mongo@^0.34.0",
+    "@db/redis": "jsr:@db/redis@^0.41.2",
     "@hono/hono": "npm:hono@4"
   }
 }

@@ -20,9 +20,6 @@ public class JwtService {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
         this.expirationMs = expirationMs;
     }
-    private static final String SECRET_KEY = "boost-is-the-secret-of-my-energy-boost-is-the-secret-of-my-energy";
-    private final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
-
     public String generateToken(String id) {
         return Jwts.builder()
                 .claim("userId", id)

@@ -3,7 +3,7 @@ FROM denoland/deno:alpine
 WORKDIR /app
 
 COPY deno.json .
-COPY deno.lock . 
+COPY deno.lock .
 
 COPY . .
 

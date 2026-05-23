@@ -38,6 +38,8 @@ services:
       context: ./user-service
       dockerfile: Dockerfile
     container_name: user-service
+    expose:
+      - "8080" # Ensure the port is visible to Nginx
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://user-db:27017/user_db
     depends_on:
@@ -64,6 +66,23 @@ services:
       retries: 5
       start_period: 30s
 
+  # -------------------------------------
+  # SHARED CACHE & QUEUE INFRASTRUCTURE
+  # -------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: hotel-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - hotel-network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
   search-service:
     build:
       context: ./search-service
@@ -71,9 +90,12 @@ services:
     container_name: search-service
     environment:
       - MONGO_SEARCH_URI=mongodb://search-db:27017
+      - REDIS_URI=redis://hotel-redis:6379
       - PORT=3000
     depends_on:
       search-db:
+          condition: service_healthy
+      redis:
           condition: service_healthy
     networks:
       - hotel-network
