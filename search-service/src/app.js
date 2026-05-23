@@ -1,6 +1,6 @@
 import { Hono } from "@hono/hono";
 import { logger } from "@hono/hono/logger";
-import { searchHotels, updateRoomAvailablity } from "./handlers/searchHandler.js";
+import { getHotelName, getRoomAvailablity, searchHotels, updateRoomAvailablity } from "./handlers/searchHandler.js";
 
 const createApp = (searchService) => {
   const app = new Hono();
@@ -12,7 +12,9 @@ const createApp = (searchService) => {
   });
 
   app.get("/api/search/hotels", searchHotels);
-  app.get("/api/search/internal", updateRoomAvailablity);
+  app.get("/api/search/internal/update-rooms", updateRoomAvailablity);
+  app.get("/api/search/internal/availability", getRoomAvailablity);
+  app.get("/api/search/internal/hotels/:id", getHotelName);
 
   app.get('/', (ctx) => {
     return ctx.json({ 'msg': "hello" });

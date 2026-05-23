@@ -20,7 +20,7 @@ export default class SearchService {
     const hotels = await this.#searchRepository.findAllHotelsByCity(city);
 
     if (hotels && hotels.length > 0) {
-      this.#cache.#setToCache(city, hotels, 3600);
+      await this.#cache.#setToCache(city, hotels, 3600);
     }
 
     return hotels;
@@ -34,6 +34,10 @@ export default class SearchService {
     return await this.#cache.get(`hotels:${city}`);
   }
 
+  async isBookingPossible(hotelId, roomsToBook) {
+    return await this.#searchRepository.checkBooking(hotelId, Number(roomsToBook));
+  }
+
   async #setToCache(city, data, ttlSeconds) {
     const formattedData = JSON.stringify(data);
     await this.#cache.set(
@@ -41,5 +45,9 @@ export default class SearchService {
       formattedData,
       { ex: ttlSeconds },
     );
+  }
+
+  async getHotelName(id) {
+    return await this.#searchRepository.searchHotel(id) || "";
   }
 }

@@ -5,28 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7c2970f-90d5-44fc-b854-67bb611c1200" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bookingService/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/BookingServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/controller/BookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/model/Booking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/repository/BookingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/requestDTO/BookHotelRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/requestDTO/UpdateRoomsRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/responseDTO/BookingResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/service/BookingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/service/SearchClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/java/com/example/bookingService/service/UserClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bookingService/src/test/java/com/example/bookingService/BookingServiceApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-service/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-service/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-service/src/handlers/searchHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/handlers/searchHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-service/src/repository/SearchRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/repository/SearchRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-service/src/service/SearchService.js" beforeDir="false" afterPath="$PROJECT_DIR$/search-service/src/service/SearchService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +69,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/amisharawat/workspace/pair_project/hotel-app-microservice"
   }
