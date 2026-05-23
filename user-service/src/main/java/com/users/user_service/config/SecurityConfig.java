@@ -1,6 +1,8 @@
 package com.users.user_service.config;
 
 import com.users.user_service.filter.JwtFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -15,21 +17,24 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
     private final JwtFilter jwtFilter;
-    public SecurityConfig(JwtFilter jwtFilter) {
-        this.jwtFilter = jwtFilter;
-    }
+    private static final Logger logger = LoggerFactory.getLogger("securityFilterChain.class");
+
+    public SecurityConfig(JwtFilter jwtFilter) {this.jwtFilter = jwtFilter;}
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
+        logger.info("Request comes.............{}", httpSecurity);
+
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.
                         sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/*", "/api/search/hotels")
+                        .requestMatchers("/api/users/*")
                         .permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest()
+                        .authenticated())
                 .addFilterBefore(
                         jwtFilter,
                         UsernamePasswordAuthenticationFilter.class
