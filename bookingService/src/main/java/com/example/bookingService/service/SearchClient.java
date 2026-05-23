@@ -12,7 +12,7 @@ public class SearchClient {
     public SearchClient(RestClient.Builder builder) {
 
         this.restClient = builder
-                .baseUrl("http://localhost:8000")
+                .baseUrl("http://search_service:3000")
                 .build();
     }
 

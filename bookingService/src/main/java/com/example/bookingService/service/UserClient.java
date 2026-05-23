@@ -11,8 +11,7 @@ public class UserClient {
     public UserClient(RestClient.Builder builder) {
 
         this.restClient = builder
-//                .baseUrl("http://localhost:8081")
-                .baseUrl("http://10.132.124.232:3000")
+                .baseUrl("http://user_service:8080")
                 .build();
     }
 
