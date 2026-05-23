@@ -19,6 +19,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String findUserNameById(String id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return user.name();
+    }
+
+    @Override
+    public String findIdByToken(String token) {
+        return jwtService.extractUserId(token);
+    }
+
+    @Override
     public AuthDTOs.RegisterResponse register(AuthDTOs.RegisterRequest user) {
         if (userRepository.existsByName(user.name()) && userRepository.existsByPassword(user.password())) {
             return new AuthDTOs.RegisterResponse("User already exists");

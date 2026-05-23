@@ -1,6 +1,6 @@
 package com.users.user_service.exception;
 
-import com.users.user_service.responseDto.ExceptionResponse;
+import com.users.user_service.dto.ExceptionResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
